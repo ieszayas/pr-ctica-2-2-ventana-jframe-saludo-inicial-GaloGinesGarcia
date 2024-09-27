@@ -4,6 +4,9 @@
  */
 package ventanainicial;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author galog
@@ -15,7 +18,15 @@ public class Saluda extends javax.swing.JFrame {
      */
     public Saluda() {
         initComponents();
+        setTitle("saluda");
+        setLocation(700, 290);
+        setResizable(false);
+        
+        
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,64 +37,19 @@ public class Saluda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
-        jFrame2 = new javax.swing.JFrame();
-        jColorChooser1 = new javax.swing.JColorChooser();
-        jColorChooser2 = new javax.swing.JColorChooser();
-        jFrame3 = new javax.swing.JFrame();
-        jFrame4 = new javax.swing.JFrame();
         BotonSaludar = new javax.swing.JButton();
         TextoNombreUsuario = new javax.swing.JTextField();
         TextoIndicador = new javax.swing.JLabel();
         inconoSaludar = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame3Layout = new javax.swing.GroupLayout(jFrame3.getContentPane());
-        jFrame3.getContentPane().setLayout(jFrame3Layout);
-        jFrame3Layout.setHorizontalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame3Layout.setVerticalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame4Layout = new javax.swing.GroupLayout(jFrame4.getContentPane());
-        jFrame4.getContentPane().setLayout(jFrame4Layout);
-        jFrame4Layout.setHorizontalGroup(
-            jFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame4Layout.setVerticalGroup(
-            jFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         BotonSaludar.setText("Saluda");
+        BotonSaludar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonSaludarMouseClicked(evt);
+            }
+        });
         BotonSaludar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonSaludarActionPerformed(evt);
@@ -145,6 +111,14 @@ public class Saluda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextoNombreUsuarioActionPerformed
 
+    private void BotonSaludarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSaludarMouseClicked
+        
+        
+        
+       JOptionPane.showMessageDialog(rootPane, "¡Hola " + TextoNombreUsuario.getText() + "!", getTitle(), JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_BotonSaludarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +150,7 @@ public class Saluda extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Saluda().setVisible(true);
+                
             }
         });
     }
@@ -185,11 +160,5 @@ public class Saluda extends javax.swing.JFrame {
     private javax.swing.JLabel TextoIndicador;
     private javax.swing.JTextField TextoNombreUsuario;
     private javax.swing.JLabel inconoSaludar;
-    private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JColorChooser jColorChooser2;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JFrame jFrame2;
-    private javax.swing.JFrame jFrame3;
-    private javax.swing.JFrame jFrame4;
     // End of variables declaration//GEN-END:variables
 }
