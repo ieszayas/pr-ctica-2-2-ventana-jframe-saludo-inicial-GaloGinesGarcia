@@ -41,6 +41,8 @@ public class Saluda extends javax.swing.JFrame {
         TextoNombreUsuario = new javax.swing.JTextField();
         TextoIndicador = new javax.swing.JLabel();
         inconoSaludar = new javax.swing.JLabel();
+        TextoIndicadorApellido = new javax.swing.JLabel();
+        TextoApellidoUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +68,14 @@ public class Saluda extends javax.swing.JFrame {
 
         inconoSaludar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanainicial/saluda.png"))); // NOI18N
 
+        TextoIndicadorApellido.setText("Escribe el apellido del usuario");
+
+        TextoApellidoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextoApellidoUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,17 +83,22 @@ public class Saluda extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(BotonSaludar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(TextoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(TextoIndicador))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(249, 249, 249)
-                        .addComponent(inconoSaludar)))
+                        .addComponent(inconoSaludar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(TextoIndicadorApellido))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(BotonSaludar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TextoApellidoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -95,9 +110,13 @@ public class Saluda extends javax.swing.JFrame {
                 .addComponent(TextoIndicador)
                 .addGap(33, 33, 33)
                 .addComponent(TextoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
+                .addComponent(TextoIndicadorApellido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextoApellidoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(BotonSaludar)
-                .addGap(96, 96, 96))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -114,10 +133,30 @@ public class Saluda extends javax.swing.JFrame {
     private void BotonSaludarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSaludarMouseClicked
         
         
+        if (TextoNombreUsuario.getText().isEmpty() || TextoIndicadorApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Error, escriba nombre y apellido del usuario.\n No pueden estar vacios.", getTitle(), JOptionPane.ERROR_MESSAGE);
+            TextoNombreUsuario.setText("");
+       TextoApellidoUsuario.setText("");
+    } else if (TextoNombreUsuario.getText().length() < 5 || TextoApellidoUsuario.getText().length() < 5){
+            JOptionPane.showMessageDialog(rootPane, "Cuidado, escriba nombre y apellido del usuario con almenos 5 caracteres", getTitle(), JOptionPane.WARNING_MESSAGE);
+            TextoNombreUsuario.setText("");
+       TextoApellidoUsuario.setText("");
         
-       JOptionPane.showMessageDialog(rootPane, "¡Hola " + TextoNombreUsuario.getText() + "!", getTitle(), JOptionPane.INFORMATION_MESSAGE);
-
+        } else if (TextoNombreUsuario.getText().matches(".*\\d.*") || TextoApellidoUsuario.getText().matches(".*\\d.*")){
+                JOptionPane.showMessageDialog(rootPane, "Cuidado, escribar un nombre y un apellido sin incluir numeros.", getTitle(), JOptionPane.WARNING_MESSAGE);
+            TextoNombreUsuario.setText("");
+       TextoApellidoUsuario.setText("");
+            } else {
+       JOptionPane.showMessageDialog(rootPane, "¡Hola " + TextoNombreUsuario.getText() + " " + TextoApellidoUsuario.getText() + "!", getTitle(), JOptionPane.INFORMATION_MESSAGE);
+       
+       TextoNombreUsuario.setText("");
+       TextoApellidoUsuario.setText("");
+        }
     }//GEN-LAST:event_BotonSaludarMouseClicked
+
+    private void TextoApellidoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoApellidoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextoApellidoUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,7 +196,9 @@ public class Saluda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonSaludar;
+    private javax.swing.JTextField TextoApellidoUsuario;
     private javax.swing.JLabel TextoIndicador;
+    private javax.swing.JLabel TextoIndicadorApellido;
     private javax.swing.JTextField TextoNombreUsuario;
     private javax.swing.JLabel inconoSaludar;
     // End of variables declaration//GEN-END:variables
