@@ -57,6 +57,11 @@ public class Saluda extends javax.swing.JFrame {
                 BotonSaludarActionPerformed(evt);
             }
         });
+        BotonSaludar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BotonSaludarKeyTyped(evt);
+            }
+        });
 
         TextoNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,27 +141,64 @@ public class Saluda extends javax.swing.JFrame {
         if (TextoNombreUsuario.getText().isEmpty() || TextoIndicadorApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Error, escriba nombre y apellido del usuario.\n No pueden estar vacios.", getTitle(), JOptionPane.ERROR_MESSAGE);
             TextoNombreUsuario.setText("");
-       TextoApellidoUsuario.setText("");
-    } else if (TextoNombreUsuario.getText().length() < 5 || TextoApellidoUsuario.getText().length() < 5){
-            JOptionPane.showMessageDialog(rootPane, "Cuidado, escriba nombre y apellido del usuario con almenos 5 caracteres", getTitle(), JOptionPane.WARNING_MESSAGE);
+            TextoApellidoUsuario.setText("");
+            return;
+        }
+        if (TextoNombreUsuario.getText().length() < 5 || TextoApellidoUsuario.getText().length() < 5){
+            JOptionPane.showMessageDialog(rootPane, "Cuidado, escriba nombre y apellido del usuario con almenos 5 caracteres en cada campo", getTitle(), JOptionPane.WARNING_MESSAGE);
             TextoNombreUsuario.setText("");
-       TextoApellidoUsuario.setText("");
+            TextoApellidoUsuario.setText("");
+            return;
         
-        } else if (TextoNombreUsuario.getText().matches(".*\\d.*") || TextoApellidoUsuario.getText().matches(".*\\d.*")){
+        } 
+     
+        if (TextoNombreUsuario.getText().matches(".*\\d.*") || TextoApellidoUsuario.getText().matches(".*\\d.*")){
                 JOptionPane.showMessageDialog(rootPane, "Cuidado, escribar un nombre y un apellido sin incluir numeros.", getTitle(), JOptionPane.WARNING_MESSAGE);
             TextoNombreUsuario.setText("");
-       TextoApellidoUsuario.setText("");
+            TextoApellidoUsuario.setText("");
+            return;
             } else {
        JOptionPane.showMessageDialog(rootPane, "¡Hola " + TextoNombreUsuario.getText() + " " + TextoApellidoUsuario.getText() + "!", getTitle(), JOptionPane.INFORMATION_MESSAGE);
        
-       TextoNombreUsuario.setText("");
-       TextoApellidoUsuario.setText("");
+            TextoNombreUsuario.setText("");
+            TextoApellidoUsuario.setText("");
+            return;
         }
     }//GEN-LAST:event_BotonSaludarMouseClicked
 
     private void TextoApellidoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoApellidoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextoApellidoUsuarioActionPerformed
+
+    private void BotonSaludarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BotonSaludarKeyTyped
+        
+        if (TextoNombreUsuario.getText().isEmpty() || TextoIndicadorApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Error, escriba nombre y apellido del usuario.\n No pueden estar vacios.", getTitle(), JOptionPane.ERROR_MESSAGE);
+            TextoNombreUsuario.setText("");
+            TextoApellidoUsuario.setText("");
+            return;
+        }
+        if (TextoNombreUsuario.getText().length() < 5 || TextoApellidoUsuario.getText().length() < 5){
+            JOptionPane.showMessageDialog(rootPane, "Cuidado, escriba nombre y apellido del usuario con almenos 5 caracteres en cada campo", getTitle(), JOptionPane.WARNING_MESSAGE);
+            TextoNombreUsuario.setText("");
+            TextoApellidoUsuario.setText("");
+            return;
+        
+        } 
+     
+        if (TextoNombreUsuario.getText().matches(".*\\d.*") || TextoApellidoUsuario.getText().matches(".*\\d.*")){
+                JOptionPane.showMessageDialog(rootPane, "Cuidado, escribar un nombre y un apellido sin incluir numeros.", getTitle(), JOptionPane.WARNING_MESSAGE);
+            TextoNombreUsuario.setText("");
+            TextoApellidoUsuario.setText("");
+            return;
+            } else {
+       JOptionPane.showMessageDialog(rootPane, "¡Hola " + TextoNombreUsuario.getText() + " " + TextoApellidoUsuario.getText() + "!", getTitle(), JOptionPane.INFORMATION_MESSAGE);
+       
+            TextoNombreUsuario.setText("");
+            TextoApellidoUsuario.setText("");
+            return;
+        }
+    }//GEN-LAST:event_BotonSaludarKeyTyped
 
     /**
      * @param args the command line arguments
