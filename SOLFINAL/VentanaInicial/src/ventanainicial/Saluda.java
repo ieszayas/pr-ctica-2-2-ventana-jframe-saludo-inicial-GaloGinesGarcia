@@ -5,6 +5,7 @@
 package ventanainicial;
 
 import java.awt.Color;
+import javax.security.auth.callback.TextOutputCallback;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +20,7 @@ public class Saluda extends javax.swing.JFrame {
     public Saluda() {
         initComponents();
         setTitle("saluda");
-        setLocation(700, 290);
+        
         setResizable(false);
         
         
@@ -45,6 +46,7 @@ public class Saluda extends javax.swing.JFrame {
         TextoApellidoUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         BotonSaludar.setText("Saluda");
         BotonSaludar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,6 +127,7 @@ public class Saluda extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonSaludarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSaludarActionPerformed
@@ -235,6 +238,8 @@ public class Saluda extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonSaludar;
